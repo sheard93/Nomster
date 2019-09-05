@@ -71,6 +71,7 @@ gem 'devise'
 gem 'nokogiri'
 gem "geocoder"
 gem "figaro"
+gem 'carrierwave', '~> 2.0'
 
 
 
