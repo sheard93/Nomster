@@ -1,4 +1,4 @@
-class PhotoController < ApplicationController
+class PhotosController < ApplicationController
   before_action :authenticate_user!
 
   def new
@@ -7,9 +7,11 @@ class PhotoController < ApplicationController
   end
 
   def create
-    @place = Place.find(params{:place_id})
-    photo = @place.photos.create(user: current_user)
-    photo.update_attributes(photo_params)
+    @place = Place.find(params[:place_id])
+    @photo = Photo.new(user: current_user)
+    @photo.update_attributes(photo_params)
+    @photo.save
+    @place.photos << @photo
     redirect_to place_path (@place)
   end
 
